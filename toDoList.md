@@ -10,6 +10,7 @@
 ## WebApi projesinde static dosya kullanımı için gereken ayarlar
 * Startup içinde app.UseStaticFiles(); ayarı
 ## Kütüphaneler
+* Npm package.json (npm init) oluşturuldu
 * Npm Paketleri
 	* Bootstrap
-	* Vue.js
+	* VueJS

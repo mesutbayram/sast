@@ -1,0 +1,28 @@
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      <script type = "text/javascript" src = "app/node_modules/vue/dist/vue.min.js"></script>
+   </head>
+   <body>
+      <div id = "intro" style = "text-align:center;">
+         <h1>{{ name }}</h1>
+         <h1>{{ lastName }}</h1>
+         <h1>{{ fullName() }}</h1>
+      </div>
+      <script type = "text/javascript">
+         var vue_det = new Vue({
+            el: '#intro',
+            data: {
+               name : 'Mesut',
+               lastName : 'BAYRAM',
+               adress : 'İST'
+            },
+            methods:{
+                fullName : function(){
+                    return this.name + " " + this.lastName;
+                }
+            }
+         });
+      </script>
+   </body>
+</html>
