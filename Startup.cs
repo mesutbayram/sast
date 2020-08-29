@@ -46,6 +46,8 @@ namespace sast
             {
                 endpoints.MapControllers();
             });
+            
+            app.UseStaticFiles();
         }
     }
 }
