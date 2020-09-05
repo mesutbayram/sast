@@ -14,3 +14,9 @@
 * Npm Paketleri
 	* Bootstrap
 	* VueJS
+
+
+
+### Homeworks
+1 vue ajax ile backednden data çekilecek
+2- v-repeatt kullanılarak tabloda gösterilecek.
