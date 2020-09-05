@@ -1,51 +1,60 @@
 <html>
-   <head>
-      <title>VueJs Introduction</title>
-      <script type = "text/javascript" src = "app/node_modules/vue/dist/vue.min.js"></script>
-   </head>
-   <body>
-      <div id = "intro" style = "text-align:center;">
-         <h1>{{ name }}</h1>
-         <h1>{{ lastName }}</h1>
-         <h1>{{ fullName() }}</h1>
-         <input type="text" v-model="sayi" /> <br/>
-         <input type="text" v-model="kareSonuc" /> <br/>
-         sonuc:<span>{{sonuc}}</span> <br/>
-         kareSonuc:<span>{{kareSonuc}}</span> <br/>
-         kupSonuc:<span>{{kupSonuc}}</span> <br/>
-      </div>
-      <script type = "text/javascript">
-         var vue_det = new Vue({
-            el: '#intro',
-            data: {
-               name : 'Mesut',
-               lastName : 'BAYRAM',
-               adress : 'İST',
-               sayi : 0
-            },
-            methods:{
-                fullName : function(){
-                    return this.name + " " + this.lastName;
-                }
-            },
-            computed:{
-               sonuc : function(){
-                  return parseInt(this.sayi) + 5;
-               },
-               kareSonuc : {
-                  get : function ()
-                   {
-                        return parseInt(this.sayi)*parseInt(this.sayi);
-                   },
-                   set : function (v)
-                   {
-                        this.sayi = Math.sqrt(v);
-                   }
-               },
-               kupSonuc () { return (parseInt(this.sayi)*parseInt(this.sayi)*parseInt(this.sayi)); }
 
+<head>
+   <title>VueJs Introduction</title>
+   <script type="text/javascript" src="app/node_modules/vue/dist/vue.min.js"></script>
+</head>
+
+<body>
+   <div id="intro" style="text-align:center;">
+      <h1>{{ name }}</h1>
+      <h1>{{ lastName }}</h1>
+      <h1>{{ fullName() }}</h1>
+      <input type="text" v-model="sayi" /> <br />
+      <input type="text" v-model="kareSonuc" /> <br />
+      sonuc:<span>{{sonuc}}</span> <br />
+      kareSonuc:<span>{{kareSonuc}}</span> <br />
+      kupSonuc:<span>{{kupSonuc}}</span> <br />
+
+      <zubeyir v-for="name in names"  :name="name">  </zubeyir>
+
+   </div>
+   <script type="text/javascript">
+      Vue.component('zubeyir', {
+         props : ['name'],
+         template: '<div><h1>Hi {{name}}</h1></div>'
+         
+      });
+      var vue_det = new Vue({
+         el: '#intro',
+         data: {
+            name: 'Mesut',
+            lastName: 'BAYRAM',
+            adress: 'İST',
+            sayi: 0,
+            names : ['mesut', 'zubeyir', 'murat']
+         },
+         methods: {
+            fullName: function () {
+               return this.name + " " + this.lastName;
             }
-         });
-      </script>
-   </body>
+         },
+         computed: {
+            sonuc: function () {
+               return parseInt(this.sayi) + 5;
+            },
+            kareSonuc: {
+               get: function () {
+                  return parseInt(this.sayi) * parseInt(this.sayi);
+               },
+               set: function (v) {
+                  this.sayi = Math.sqrt(v);
+               }
+            },
+            kupSonuc() { return (parseInt(this.sayi) * parseInt(this.sayi) * parseInt(this.sayi)); }
+         }
+      });
+   </script>
+</body>
+
 </html>
