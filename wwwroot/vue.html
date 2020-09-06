@@ -52,6 +52,13 @@
                }
             },
             kupSonuc() { return (parseInt(this.sayi) * parseInt(this.sayi) * parseInt(this.sayi)); }
+         },
+         watch: {
+            sayi (v) {
+               if (v > 100){
+                  this.sayi = v = 100;
+               }
+            }
          }
       });
    </script>

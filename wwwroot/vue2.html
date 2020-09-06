@@ -1,0 +1,94 @@
+<html>
+
+<head>
+   <title>VueJs Introduction</title>
+   <script type="text/javascript" src="app/node_modules/vue/dist/vue.min.js"></script>
+   <link rel="stylesheet" href="app/node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+   <div class="container" id="users">
+      <form>
+         <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" v-model="email" class="form-control" id="email" aria-describedby="emailHelp"
+               placeholder="Enter email">
+         </div>
+         <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" v-model="fullName" class="form-control" id="fullName" placeholder="fullName">
+         </div>
+         <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" v-model="pass" class="form-control" id="pass" placeholder="Password">
+         </div>
+         <div class="form-group form-check">
+            <input v-model="isAdmin" type="checkbox" class="form-check-input" id="admin">
+            <label class="form-check-label" for="admin">Admin</label>
+         </div>
+         <button @click="add" type="button" class="btn btn-primary">Ekle</button>
+
+      </form>
+      <table class="table table-striped">
+         <thead>
+            <tr>
+               <th></th>
+               <th scope="col">#</th>
+               <th scope="col">Email</th>
+               <th scope="col">Full Name</th>
+               <th scope="col">Password</th>
+               <th scope="col">Admin</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr v-for="(user, index) in users" @click="delete($event, index)">
+               <th ><button  @click="delete($event, index)" type="button" class="btn btn-default"><img  @click="delete($event, index)"
+                        src="app/node_modules/bootstrap-icons/icons/trash.svg" alt="" width="20" height="20"
+                        title="Bootstrap"></button>
+                  <!-- <button @click="edit(index)" type="button" class="btn btn-default"><img
+                        src="app/node_modules/bootstrap-icons/icons/pencil.svg" alt="" width="20" height="20"
+                        title="Bootstrap"></button> -->
+               </th>
+               <th scope="row">{{index + 1}}</th>
+               <td>{{user.email}}</td>
+               <td>{{user.fullname}}</td>
+               <td>{{user.pass}}</td>
+               <td>{{user.isAdmin}}</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   <script type="text/javascript">
+      var vm = new Vue({
+         el: '#users',
+         data: {
+            email: '',
+            fullName: '',
+            pass: '',
+            isAdmin: false,
+            users: []
+         },
+         methods: {
+            add() {
+               this.users.push({
+                  email: this.email,
+                  fullname: this.fullName,
+                  pass: this.pass,
+                  isAdmin: this.isAdmin
+               });
+               this.email = '';
+               this.fullName = '';
+               this.pass = '';
+               this.isAdmin = false;
+            },
+            delete : function (ev, i) {
+               alert('test');
+            },
+            edit(i) {
+            }
+         }
+      });
+   </script>
+</body>
+
+</html>
