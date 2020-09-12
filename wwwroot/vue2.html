@@ -16,7 +16,7 @@
          </div>
          <div class="form-group">
             <label for="fullName">Full Name</label>
-            <input type="text" v-model="fullName" class="form-control" id="fullName" placeholder="fullName">
+            <input type="text" v-model="fullName" class="form-control" id="fullName" placeholder="Full Name">
          </div>
          <div class="form-group">
             <label for="pass">Password</label>
@@ -42,12 +42,9 @@
          </thead>
          <tbody>
             <tr v-for="(user, index) in users" @click="delete($event, index)">
-               <th ><button  @click="delete($event, index)" type="button" class="btn btn-default"><img  @click="delete($event, index)"
+               <th ><button  @click="deleteItem($event, index)" type="button" class="btn btn-default"><img  @click="delete($event, index)"
                         src="app/node_modules/bootstrap-icons/icons/trash.svg" alt="" width="20" height="20"
                         title="Bootstrap"></button>
-                  <!-- <button @click="edit(index)" type="button" class="btn btn-default"><img
-                        src="app/node_modules/bootstrap-icons/icons/pencil.svg" alt="" width="20" height="20"
-                        title="Bootstrap"></button> -->
                </th>
                <th scope="row">{{index + 1}}</th>
                <td>{{user.email}}</td>
@@ -81,7 +78,7 @@
                this.pass = '';
                this.isAdmin = false;
             },
-            delete : function (ev, i) {
+            deleteItem : function (ev, i) {
                alert('test');
             },
             edit(i) {
